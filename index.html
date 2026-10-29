@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Magnolia Private Residences — Câu chuyện</title>
+<meta name="description" content="The Magnolia Private Residences — căn hộ hạng sang tại Khai Sơn City, Long Biên. Giá từ 250 triệu/m².">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero-aerial.webp" imagesrcset="img/hero-aerial-900.webp 900w, img/hero-aerial.webp 1800w" imagesizes="100vw">
+<style>
+:root{
+  --ink:#0b0b0b; --paper:#ffffff; --mute:#8b8b8b; --line:rgba(11,11,11,.18); --line-d:rgba(255,255,255,.22);
+  --pad:clamp(1.25rem,2.2vw,2.5rem); --sec:clamp(6rem,11vw,10.5rem);
+  --ease:cubic-bezier(.165,.84,.44,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{font-family:"Be Vietnam Pro",Arial,sans-serif;background:var(--paper);color:var(--ink);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.page{opacity:0}
+.wrap{padding-left:var(--pad);padding-right:var(--pad)}
+.up{text-transform:uppercase}
+.small{font-size:.8125rem;letter-spacing:.01em;text-transform:uppercase;line-height:1.35}
+.display{font-weight:500;text-transform:uppercase;letter-spacing:-.025em;line-height:1.24}
+
+/* ===== roll text (menu / buttons) ===== */
+.roll{display:inline-block;position:relative;overflow:hidden;vertical-align:top;line-height:1.25}
+.roll>span{display:block;transition:transform .5s var(--ease),opacity .5s var(--ease)}
+.roll>span+span{position:absolute;left:0;top:0;transform:translateY(100%);opacity:0}
+a:hover .roll>span:first-child,button:hover .roll>span:first-child{transform:translateY(-100%);opacity:0}
+a:hover .roll>span+span,button:hover .roll>span+span{transform:translateY(0);opacity:1}
+
+/* ===== button ===== */
+.btn{display:inline-flex;align-items:center;gap:.9rem;height:3.25rem;padding:0 1.6rem 0 1.75rem;border-radius:999px;font-size:.8125rem;font-weight:500;text-transform:uppercase;letter-spacing:.02em;border:1px solid currentColor;transition:background .4s,color .4s}
+.btn .star{width:.85rem;height:.85rem;transition:transform .6s var(--ease)}
+.btn:hover .star{transform:rotate(90deg)}
+.btn-light{background:#e9e7e3;color:var(--ink);border-color:#e9e7e3}
+.btn-ghost-d{color:#fff}
+.btn-ghost-d:hover{background:#fff;color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:#fff}
+
+/* ===== header ===== */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;gap:2.5rem;height:4.5rem;color:#fff;mix-blend-mode:difference;transition:translate .6s var(--ease)}
+.nav.away{translate:0 -110% !important}
+.logo{font-weight:600;font-size:1.3rem;letter-spacing:-.03em}
+.loc{display:flex;align-items:center;gap:.5rem;font-size:.8125rem}
+.loc svg{width:15px;height:15px}
+.nav-links{margin-left:auto;display:flex;gap:2.1rem;font-size:.8125rem;text-transform:uppercase}
+.nav-links a{position:relative;padding:.6rem 0}
+.nav-call{font-size:.8125rem;display:flex;align-items:center;gap:.5rem}
+.nav-call i{width:7px;height:7px;border-radius:50%;background:#fff;display:inline-block}
+.burger{display:none;width:44px;height:44px;margin-left:auto;position:relative}
+.burger i{position:absolute;left:11px;right:11px;height:1.5px;background:#fff;transition:transform .5s var(--ease)}
+.burger i:first-child{top:18px}.burger i:last-child{top:25px}
+.menu-open .burger i:first-child{transform:translateY(3.5px) rotate(45deg)}
+.menu-open .burger i:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+.mmenu{position:fixed;inset:0;z-index:45;background:var(--ink);color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:6rem var(--pad) 2.5rem;clip-path:inset(0 0 100% 0);transition:clip-path .8s var(--ease);visibility:hidden}
+.menu-open .mmenu{clip-path:inset(0);visibility:visible}
+.mmenu a{font-size:2.4rem;font-weight:500;text-transform:uppercase;letter-spacing:-.02em;line-height:1.3;border-top:1px solid var(--line-d);padding:.55rem 0;display:flex;justify-content:space-between;align-items:baseline}
+.mmenu a small{font-size:.75rem;letter-spacing:0;color:var(--mute)}
+.mmenu .mm-call{margin-top:1.5rem;font-size:.9rem;border:0;letter-spacing:0}
+
+/* ===== flip heading (Brave "heading rotate") ===== */
+.flip{position:relative;display:block;perspective:1600px}
+.flip-front,.flip-back{display:block;transform-style:preserve-3d;backface-visibility:hidden;will-change:transform}
+.flip-back{position:absolute;left:0;top:0;width:100%}
+
+/* ===== hero ===== */
+.hero{position:relative;height:100vh;min-height:640px;overflow:hidden;color:#efeeeb;background:#111}
+.hero-media{position:absolute;inset:0;overflow:hidden}
+.hero-inner{position:absolute;inset:0}
+.hero-inner img{width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,.12) 35%,rgba(0,0,0,.18) 60%,rgba(0,0,0,.62) 100%);pointer-events:none}
+.hero-top{position:relative;z-index:2;padding-top:5.4rem}
+.hw{display:flex}
+.hw2{justify-content:flex-end;margin-top:.04em}
+.hero-title{font-size:12.6vw;font-weight:500;text-transform:uppercase;letter-spacing:-.04em;line-height:.94;white-space:nowrap;color:#efeeeb}
+.hero-bottom{position:absolute;z-index:2;left:0;right:0;bottom:2.4rem;display:flex;justify-content:space-between;align-items:flex-end;gap:2rem}
+.hero-cue{display:flex;align-items:center;gap:.8rem;font-size:.8125rem;text-transform:uppercase}
+.hero-cue i{width:1px;height:2.6rem;background:rgba(255,255,255,.7);display:block;transform-origin:top;animation:cue 2.4s var(--ease) infinite}
+@keyframes cue{0%{transform:scaleY(0)}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.hero-intro{width:min(25rem,34vw);display:flex;flex-direction:column;align-items:flex-start;gap:1.6rem}
+.hero-intro p{font-size:.875rem;text-transform:uppercase;line-height:1.4}
+
+/* ===== section title row ===== */
+.st-row{display:flex;justify-content:space-between;font-size:.8125rem;text-transform:uppercase;padding-bottom:.7rem;position:relative}
+.st-row .ln{position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;opacity:.9;transform-origin:left}
+
+/* ===== about (01) ===== */
+.about{padding-top:var(--sec);padding-bottom:var(--sec)}
+.about-grid{display:grid;grid-template-columns:2.2rem minmax(0,1.25fr) minmax(0,1fr);gap:clamp(1.5rem,3vw,3.5rem);align-items:stretch}
+.rail{display:flex;flex-direction:column;align-items:center;gap:1rem;font-size:.8125rem;text-transform:uppercase}
+.rail .v{flex:1;width:1px;background:var(--ink);transform-origin:top}
+.rail span{writing-mode:vertical-rl;transform:rotate(180deg)}
+.about h2{font-size:clamp(2.6rem,4.6vw,4.9rem)}
+.about p.lead{font-size:clamp(1.1rem,1.55vw,1.5rem);line-height:1.38;margin:clamp(2.5rem,6vw,5.5rem) 0 2.6rem;text-indent:4.5rem;max-width:40rem;letter-spacing:-.01em}
+.ph{position:relative}
+.ph-in{position:absolute;inset:0;overflow:hidden;background:var(--ink)}
+.ph .cover{position:absolute;inset:0}
+.ph img{width:100%;height:100%;object-fit:cover}
+.about .ph{aspect-ratio:4/5;align-self:center;width:min(100%,34rem);justify-self:end}
+
+/* ===== mission (02) ===== */
+.mission{padding-bottom:var(--sec);overflow:hidden}
+.mission .st-row{width:min(36rem,42vw);margin-left:auto}
+.m-lines{margin-top:clamp(1.5rem,3vw,3rem)}
+.m-line{display:flex;align-items:flex-start;gap:.6rem}
+.m-line .display{font-size:11vw;letter-spacing:-.035em;line-height:1.18}
+.m-num{font-size:.75rem;padding-top:2.4vw}
+.m-l2{padding-left:25vw}
+.m-l3{padding-left:25vw}
+.m-bottom{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--pad);margin-top:-8vw;align-items:end}
+.m-bottom .ph{aspect-ratio:3/4;width:min(100%,21vw)}
+.m-text{max-width:26rem;justify-self:end;margin-right:clamp(0rem,6vw,7rem)}
+.m-text p{font-size:.875rem;text-transform:uppercase;line-height:1.45;text-indent:3rem}
+.m-stats{display:flex;gap:2.4rem;margin-top:2rem}
+.m-stats b{display:block;font-size:2.2rem;font-weight:500;letter-spacing:-.04em;line-height:1}
+.m-stats span{font-size:.75rem;text-transform:uppercase;color:#555}
+
+/* ===== split amenities (03) ===== */
+.split{position:relative;height:620vh;background:var(--paper)}
+.split-sticky{position:sticky;top:0;height:100vh;overflow:hidden}
+.split-img{position:absolute;left:0;top:0;bottom:0;width:100%;overflow:hidden;background:#222}
+.split-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.split-img img:not(.on){clip-path:inset(100% 0 0 0)}
+.split-bg{position:absolute;right:0;top:0;bottom:0;width:50%;background:var(--ink);transform:scaleX(0);transform-origin:right}
+.split-content{position:absolute;right:0;top:0;bottom:0;width:50%;color:#fff;padding:5.4rem var(--pad) 2.2rem;display:flex;flex-direction:column}
+.split-content .st-row{opacity:0}
+.acc{margin-top:clamp(1.8rem,4vh,3rem);opacity:0}
+.acc-item{position:relative;transition:opacity .5s var(--ease)}
+.acc.stepping .acc-item{opacity:.3}
+.acc.stepping .acc-item.open{opacity:1}
+.acc-bar{position:absolute;left:0;right:0;bottom:0;height:1px;background:rgba(255,255,255,.18);overflow:hidden}
+.acc-bar i{position:absolute;inset:0;background:#fff;transform:scaleX(0);transform-origin:left}
+.acc-item:not(.open) .acc-bar{opacity:0}
+.acc-t{display:flex;align-items:flex-start;gap:.3rem;text-align:left;font-size:clamp(2rem,3.4vw,3.4rem);font-weight:500;text-transform:uppercase;letter-spacing:-.025em;line-height:1.24;padding:.02em 0;width:100%}
+.acc-t sup{font-size:.4em;letter-spacing:0;margin-top:.15em;display:inline-block;transition:transform .5s var(--ease)}
+.acc-t:hover sup{transform:translateX(.36rem)}
+.acc-t .pl{margin-left:auto;align-self:center;width:1.1rem;height:1.1rem;position:relative;opacity:.0;transition:opacity .4s}
+.acc-item.open .pl,.acc-t:hover .pl{opacity:1}
+.pl:before,.pl:after{content:"";position:absolute;left:0;right:0;top:50%;height:1.5px;background:#fff;transition:transform .4s var(--ease)}
+.pl:after{transform:rotate(90deg)}
+.acc-item.open .pl:after{transform:rotate(0)}
+.acc-c{height:0;overflow:hidden}
+.acc-ci{padding:1rem 0 1.4rem;max-width:30rem;display:grid;grid-template-columns:1fr auto;gap:2rem}
+.acc-ci p{font-size:.875rem;line-height:1.55;color:#cfcfcf}
+.acc-ci ul{list-style:none;font-size:.75rem;text-transform:uppercase;line-height:1.9;white-space:nowrap}
+.acc-ci li:before{content:"✓";margin-right:.5rem;opacity:.6}
+.split-cta{margin-top:auto;opacity:0}
+.split-cap{position:absolute;left:var(--pad);bottom:1.6rem;z-index:2;color:#fff;font-size:.75rem;text-transform:uppercase;display:flex;gap:.6rem;align-items:center;text-shadow:0 1px 8px rgba(0,0,0,.4)}
+.split-cap i{width:22px;height:1px;background:#fff;display:inline-block}
+.split-cap b{font-weight:500;letter-spacing:.04em}
+
+/* ===== spaces (04) ===== */
+.spaces{padding-top:var(--sec);padding-bottom:var(--sec)}
+.sp-head{display:flex;justify-content:space-between;align-items:flex-end;margin-top:clamp(1.5rem,3vw,2.5rem);gap:2rem}
+.sp-head h2{font-size:11vw}
+.sp-side{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;align-self:stretch;padding-top:1rem;gap:2rem;text-align:right}
+.sp-side p{font-size:.8125rem;text-transform:uppercase}
+.tabs{position:relative;display:flex;border:1px solid var(--ink);border-radius:999px;padding:3px;background:var(--ink)}
+.tabs button{position:relative;z-index:1;font-size:.75rem;text-transform:uppercase;padding:.7rem 1.4rem;min-width:7rem;color:#fff;transition:color .4s;border-radius:999px}
+.tabs button.on{color:var(--ink)}
+.tabs .pill{position:absolute;top:3px;bottom:3px;left:3px;border-radius:999px;background:#fff;transition:transform .55s var(--ease),width .55s var(--ease)}
+.sp-panels{margin-top:clamp(2.5rem,5vw,4.5rem)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem}
+.card{position:relative;display:block;aspect-ratio:1.18/1;overflow:hidden;color:#fff;background:#222}
+.card img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.card:hover img{transform:scale(1.05)}
+.card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.38),rgba(0,0,0,0) 30%,rgba(0,0,0,0) 75%,rgba(0,0,0,.3));pointer-events:none}
+.card-t{position:absolute;z-index:2;left:1.5rem;top:1.3rem;font-size:clamp(1.15rem,1.6vw,1.5rem);letter-spacing:-.02em;overflow:hidden;line-height:1.25}
+.card-t span{display:block;transition:transform .57s var(--ease),opacity .57s var(--ease)}
+.card-t span+span{position:absolute;left:0;top:0;transform:translateY(100%);opacity:0}
+.card:hover .card-t span:first-child{transform:translateY(-100%);opacity:0}
+.card:hover .card-t span+span{transform:none;opacity:1}
+.arw{position:absolute;z-index:2;right:1.4rem;top:1.3rem;width:2rem;height:2rem;border-radius:50%;background:#fff;color:var(--ink);overflow:hidden}
+.arw svg{position:absolute;inset:0;margin:auto;width:.8rem;height:.8rem;transition:transform .57s var(--ease),opacity .57s}
+.arw svg+svg{transform:translate(-160%,160%);opacity:0}
+a:hover .arw svg:first-child{transform:translate(160%,-160%);opacity:0}
+a:hover .arw svg+svg{transform:none;opacity:1}
+.tags{position:absolute;z-index:2;left:1.5rem;bottom:1.3rem;display:flex;gap:.4rem}
+.tags span{font-size:.75rem;padding:.35rem .8rem;border-radius:999px;background:rgba(255,255,255,.88);color:var(--ink)}
+.list{display:none}
+.list a{position:relative;display:grid;grid-template-columns:2.2fr 1.4fr 1fr 2rem;align-items:center;gap:1.5rem;padding:1.6rem 1rem;border-top:1px solid var(--line);font-size:clamp(1.3rem,2.2vw,2rem);letter-spacing:-.03em;overflow:hidden}
+.list a:last-child{border-bottom:1px solid var(--line)}
+.list .bgh{position:absolute;inset:0;background:var(--ink);transform:scaleY(0);transition:transform .5s var(--ease);z-index:0}
+.list a>*:not(.bgh){position:relative;z-index:1;transition:transform .5s var(--ease),color .1s}
+.list a:hover .bgh{transform:scaleY(1)}
+.list a:hover{color:#fff}
+.list a:hover .c1{transform:translateX(1rem)}
+.list a:hover .c4{transform:translateX(-1rem)}
+.list .c2,.list .c3{font-size:.8125rem;letter-spacing:0;text-transform:uppercase}
+.list .c4{width:2rem;height:2rem}
+.list-prev{position:fixed;left:0;top:0;width:18rem;aspect-ratio:4/3;z-index:40;pointer-events:none;overflow:hidden;opacity:0;transform:scale(.8);transition:opacity .4s,transform .5s var(--ease)}
+.list-prev.on{opacity:1;transform:scale(1)}
+.list-prev img{width:100%;height:100%;object-fit:cover}
+.sp-foot{display:flex;justify-content:space-between;align-items:center;margin-top:2.6rem;gap:1.5rem}
+.sp-foot p{font-size:.8125rem;text-transform:uppercase;max-width:26rem}
+
+/* ===== why (05) ===== */
+.why{position:relative;color:#fff;background:#050505}
+.why-bg{position:absolute;inset:0;pointer-events:none}
+.why-bg-in{position:sticky;top:0;height:100vh;overflow:hidden}
+.why-bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(.55) brightness(.42) contrast(1.05)}
+.why-in{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:var(--pad);padding-top:var(--sec);padding-bottom:var(--sec)}
+.why-head{grid-column:1;grid-row:1/span 5;align-self:start;position:sticky;top:6.5rem;display:flex;gap:1.2rem}
+.why-head .rail{color:#fff}
+.why-head .rail .v{background:#fff}
+.why-head h2{font-size:clamp(2rem,3.2vw,3.6rem)}
+.bcard{position:relative;background:#fff;color:var(--ink);min-height:25rem;display:flex;flex-direction:column}
+.bcard .bl{position:absolute;background:var(--ink)}
+.bcard .bl.t,.bcard .bl.b{left:.75rem;right:.75rem;height:1px;transform-origin:left}
+.bcard .bl.t{top:.75rem}.bcard .bl.b{bottom:.75rem}
+.bcard .bl.l,.bcard .bl.r{top:.75rem;bottom:.75rem;width:1px;transform-origin:top}
+.bcard .bl.l{left:.75rem}.bcard .bl.r{right:.75rem}
+.bcard .bl.m{left:.75rem;right:.75rem;top:42%;height:1px;transform-origin:left}
+.bc-top{height:42%;display:flex;align-items:center;gap:1.1rem;padding:2.2rem 2.2rem 1.2rem}
+.bc-top svg{width:2.6rem;height:2.6rem;flex:none}
+.bc-top h3{font-size:1.35rem;font-weight:500;letter-spacing:-.015em;line-height:1.3}
+.bc-top h3 small{display:block;font-size:.72rem;letter-spacing:.02em;text-transform:uppercase;color:#777;margin-bottom:.3rem;font-weight:400}
+.bc-txt{padding:2rem 2.2rem 2.2rem;font-size:.9rem;line-height:1.55;margin-top:auto}
+.b1{grid-column:3;grid-row:1;margin-top:16vh}
+.b2{grid-column:2;grid-row:2;margin-top:10vh}
+.b3{grid-column:4;grid-row:3;margin-top:4vh}
+.b4{grid-column:3;grid-row:4;margin-top:6vh}
+
+/* ===== moments (06) ===== */
+.moments{padding-top:var(--sec);padding-bottom:var(--sec)}
+.mo-head{display:flex;justify-content:space-between;align-items:flex-end;margin-top:clamp(1.5rem,3vw,2.5rem);gap:2rem}
+.mo-head h2{font-size:9vw}
+.mo-side{display:flex;align-items:center;gap:2rem;padding-bottom:1vw}
+.mo-side p{font-size:.8125rem;text-transform:uppercase;max-width:17rem}
+.mo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem;margin-top:clamp(3rem,6vw,5rem)}
+.mo{display:block}
+.mo .pimg{aspect-ratio:1.55/1;border-radius:999px;overflow:hidden;background:#ddd}
+.mo .pimg img{width:100%;height:100%;object-fit:cover;transition:transform .75s var(--ease)}
+.mo:hover .pimg img{transform:scale(1.1)}
+.mo-meta{display:flex;align-items:center;gap:.7rem;margin-top:1.4rem;transition:transform .75s var(--ease)}
+.mo:hover .mo-meta{transform:translateX(.625rem)}
+.mo-dot{width:.5rem;height:.5rem;border-radius:50%;background:var(--ink);opacity:0;transition:opacity .75s}
+.mo:hover .mo-dot{opacity:1}
+.mo h3{font-size:1.15rem;font-weight:500;letter-spacing:-.015em;line-height:1.3}
+.mo small{display:block;font-size:.72rem;text-transform:uppercase;margin-top:.9rem;color:#555}
+
+/* ===== footer ===== */
+.foot{background:var(--ink);color:#fff;min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;padding-top:2rem;padding-bottom:2rem;overflow:hidden}
+.ft-top{display:grid;grid-template-columns:1.3fr 1fr 1fr auto;gap:2rem;font-size:.8125rem;text-transform:uppercase}
+.ft-top .btn{height:2.4rem;padding:0 1.1rem;margin-top:.8rem;font-size:.72rem}
+.ft-top .lbl{color:var(--mute);display:block;margin-bottom:.2rem}
+.ft-top .big{font-size:1.25rem;letter-spacing:-.01em;text-transform:none}
+.totop{display:flex;align-items:center;gap:.5rem;height:fit-content}
+.totop i{width:1.5rem;height:1.5rem;border-radius:50%;background:#fff;color:var(--ink);position:relative;overflow:hidden}
+.totop i svg{position:absolute;inset:0;margin:auto;width:.65rem;height:.65rem;transition:transform .5s var(--ease)}
+.totop i svg+svg{transform:translateY(160%)}
+.totop:hover i svg:first-child{transform:translateY(-160%)}
+.totop:hover i svg+svg{transform:none}
+.mq-wrap{position:relative;margin:4rem 0}
+.mq{display:flex;white-space:nowrap;font-size:10.4vw;font-weight:500;text-transform:uppercase;letter-spacing:-.03em;line-height:1.08}
+.mq-track{display:flex;flex:none;animation:mq 42s linear infinite}
+.mq-track span{padding-right:.35em}
+.mq.rev .mq-track{animation-direction:reverse}
+.mq-paused .mq-track{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(-50%)}}
+.circle{position:absolute;left:50%;top:50%;width:clamp(9rem,13vw,12.5rem);height:clamp(9rem,13vw,12.5rem);margin:calc(clamp(9rem,13vw,12.5rem)/-2) 0 0 calc(clamp(9rem,13vw,12.5rem)/-2);z-index:2}
+.circle .cbg{position:absolute;inset:0;border-radius:50%;background:var(--ink);border:1px solid rgba(255,255,255,.5);transition:transform .5s var(--ease)}
+.circle:hover .cbg{transform:scale(1.05)}
+.circle .ring{position:absolute;inset:0;animation:spin 20s linear infinite}
+.circle .ring text{font-size:9.6px;letter-spacing:2.2px;fill:#fff;text-transform:uppercase}
+@keyframes spin{to{transform:rotate(-360deg)}}
+.circle .cic{position:absolute;inset:0;margin:auto;width:1.1rem;height:1.1rem;overflow:hidden}
+.circle .cic svg{position:absolute;inset:0;width:100%;height:100%;transition:transform .5s var(--ease),opacity .5s}
+.circle .cic svg+svg{transform:translate(-110%,110%);opacity:0}
+.circle:hover .cic svg:first-child{transform:translate(110%,-110%);opacity:0}
+.circle:hover .cic svg+svg{transform:none;opacity:1}
+.ft-bot{display:flex;justify-content:space-between;font-size:.8125rem;gap:1rem;flex-wrap:wrap;color:#cfcfcf}
+.ft-bot a{text-decoration:underline;text-underline-offset:3px}
+
+/* floating mobile call */
+.fab{display:none}
+
+/* concept badge (artifact only) */
+.concept-badge{position:fixed;left:50%;bottom:1rem;transform:translateX(-50%);z-index:60;background:rgba(11,11,11,.82);color:#fff;font-size:.72rem;letter-spacing:.02em;padding:.45rem .9rem;border-radius:999px;backdrop-filter:blur(6px);pointer-events:none;white-space:nowrap}
+
+/* ===== 1920 tuning ===== */
+@media (min-width:1700px){
+  body{font-size:17px}
+  .btn{height:3.5rem}
+  .about .ph{width:min(100%,38rem)}
+  .m-bottom .ph{width:min(100%,28rem)}
+  .bcard{min-height:27rem}
+}
+
+/* ===== mobile ===== */
+@media (max-width:799px){
+  .nav{height:4rem;gap:1rem}
+  .loc,.nav-links,.nav-call{display:none}
+  .burger{display:block}
+  .hero{height:100svh;min-height:600px}
+  .hero-top{padding-top:5.5rem}
+  .hero-title{font-size:14.4vw}
+  .hw2{justify-content:flex-end}
+  .hero-inner img{object-position:58% 60%}
+  .hero-bottom{flex-direction:column;align-items:stretch;bottom:2rem;gap:2rem}
+  .hero-cue{display:none}
+  .hero-intro{width:100%}
+  .hero-intro p{font-size:.8rem}
+  .about-grid{grid-template-columns:1.6rem minmax(0,1fr)}
+  .about .ph{grid-column:1/-1;width:100%;margin-top:1rem}
+  .about h2{font-size:8.3vw}
+  .about p.lead{font-size:15px;text-indent:2.5rem;margin:2rem 0}
+  .mission .st-row{width:100%}
+  .m-line .display{font-size:13vw;white-space:nowrap}
+  .m-l2,.m-l3{padding-left:7vw}
+  .m-num{font-size:.68rem}
+  .m-bottom{grid-template-columns:1fr;margin-top:2.5rem;gap:2.2rem}
+  .m-bottom .ph{width:78%!important}
+  .m-text{margin:0;justify-self:start}
+  .m-text p{font-size:.85rem}
+  .m-stats{gap:1.6rem}
+  .m-stats b{font-size:1.55rem;white-space:nowrap}
+  .split{height:auto}
+  .split-sticky{position:relative;height:auto;overflow:visible}
+  .split-img{position:relative;width:100%!important;height:70vh}
+  .split-bg{display:none}
+  .split-content{position:relative;width:100%;background:var(--ink);padding:2.2rem var(--pad) 2.6rem}
+  .split-content .st-row,.acc,.split-cta{opacity:1!important;transform:none!important}
+  .acc-t{font-size:2.15rem;min-height:44px}
+  .acc-t .pl{opacity:1}
+  .acc-bar{display:none}
+  .split-cap b{display:none}
+  .acc-ci{grid-template-columns:1fr;gap:1rem}
+  .acc-ci p{font-size:15px}
+  .split-cta{margin-top:2rem}
+  .sp-head{flex-direction:column;align-items:flex-start}
+  .sp-head h2{font-size:17vw}
+  .sp-side{align-items:flex-start;text-align:left;flex-direction:row;align-self:auto;width:100%;justify-content:space-between;padding-top:0}
+  .tabs button{min-width:0;padding:.75rem 1.1rem;min-height:44px}
+  .grid{grid-template-columns:1fr}
+  .card{aspect-ratio:4/4.3}
+  .tags{left:1.1rem;bottom:1.1rem}.card-t{left:1.1rem}.arw{right:1.1rem}
+  .list a{grid-template-columns:1fr auto;padding:1.2rem .25rem;font-size:1.35rem}
+  .list .c2,.list .c3{display:none}
+  .list-prev{display:none}
+  .sp-foot{flex-direction:column;align-items:flex-start}
+  .why-in{grid-template-columns:1fr;row-gap:1.5rem}
+  .why-head{position:relative;top:0;grid-row:auto;margin-bottom:2rem}
+  .bcard{grid-column:1!important;grid-row:auto!important;margin-top:0!important;min-height:20rem}
+  .bc-txt{font-size:15px}
+  .mo-head{flex-direction:column;align-items:flex-start}
+  .mo-head h2{font-size:12.5vw;white-space:nowrap}
+  .mo-side{flex-direction:column;align-items:flex-start;gap:1.2rem}
+  .mo-grid{grid-template-columns:1fr;gap:2.5rem}
+  .foot{min-height:auto;padding-bottom:6rem}
+  .ft-top{grid-template-columns:1fr 1fr;row-gap:2rem}
+  .mq{font-size:19vw}
+  .mq-wrap{margin:5rem 0}
+  .circle{width:8rem;height:8rem;margin:-4rem 0 0 -4rem}
+  .fab{display:flex;position:fixed;right:1rem;bottom:1rem;z-index:55;width:4.2rem;height:4.2rem;border-radius:50%;background:var(--ink);color:#fff;align-items:center;justify-content:center;text-align:center;font-size:.62rem;text-transform:uppercase;line-height:1.15;border:1px solid rgba(255,255,255,.35);transition:transform .5s var(--ease),opacity .4s}
+  .fab.hide{transform:scale(.6);opacity:0;pointer-events:none}
+  .concept-badge{left:1rem;bottom:1.2rem;transform:none;font-size:.62rem}
+}
+@media (prefers-reduced-motion:reduce){
+  .mq-track,.circle .ring{animation:none}
+}
+</style>
+</head>
+<body>
+
+<header class="nav wrap">
+  <a href="#top" class="logo">Magnolia.</a>
+  <div class="loc"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="8" cy="8" r="6.5"/><path d="M1.5 8h13M8 1.5c2 2.2 2 10.8 0 13M8 1.5c-2 2.2-2 10.8 0 13"/></svg>Khai Sơn City · Long Biên, Hà Nội</div>
+  <nav class="nav-links">
+    <a href="#du-an"><span class="roll"><span>Dự án</span><span>Dự án</span></span></a>
+    <a href="#kien-truc"><span class="roll"><span>Kiến trúc</span><span>Kiến trúc</span></span></a>
+    <a href="#tien-ich"><span class="roll"><span>Tiện ích</span><span>Tiện ích</span></span></a>
+    <a href="#khong-gian"><span class="roll"><span>Không gian</span><span>Không gian</span></span></a>
+    <a href="#lien-he"><span class="roll"><span>Liên hệ</span><span>Liên hệ</span></span></a>
+  </nav>
+  <a class="nav-call" href="tel:0336764345"><i></i><span class="roll"><span>033.6764.345</span><span>Gọi ngay</span></span></a>
+  <button class="burger" aria-label="Mở menu"><i></i><i></i></button>
+</header>
+<div class="mmenu" aria-hidden="true">
+  <a href="#du-an">Dự án <small>01</small></a>
+  <a href="#kien-truc">Kiến trúc <small>02</small></a>
+  <a href="#tien-ich">Tiện ích <small>03</small></a>
+  <a href="#khong-gian">Không gian <small>04</small></a>
+  <a href="#lien-he">Liên hệ <small>05</small></a>
+  <a class="mm-call" href="tel:0336764345">Hotline 033.6764.345</a>
+</div>
+
+<div class="page">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-media"><div class="hero-inner">
+    <img src="img/hero-aerial.webp" srcset="img/hero-aerial-900.webp 900w, img/hero-aerial.webp 1800w" sizes="100vw" alt="Phối cảnh The Magnolia Private Residences lúc hoàng hôn" fetchpriority="high">
+  </div></div>
+  <div class="hero-top wrap">
+    <div class="hw hw1"><div class="flip" data-hero-flip="0"><h1 class="flip-front hero-title">Magnolia</h1><div class="flip-back hero-title" aria-hidden="true">Magnolia</div></div></div>
+    <div class="hw hw2"><div class="flip" data-hero-flip=".37"><div class="flip-front hero-title">Residences</div><div class="flip-back hero-title" aria-hidden="true">Residences</div></div></div>
+  </div>
+  <div class="hero-bottom wrap">
+    <div class="hero-cue" data-h="1.2"><i></i>Cuộn để khám phá</div>
+    <div class="hero-intro">
+      <p data-h="1.25">Dòng căn hộ hạng sang của MIK Group tại Khai Sơn City, Long Biên — nơi không gian rộng, trần cao và sự riêng tư được đặt lên trước tiên.</p>
+      <a href="#du-an" class="btn btn-light" data-h="1.4"><span class="roll"><span>Khám phá dự án</span><span>Khám phá dự án</span></span><svg class="star" viewBox="0 0 14 14"><path d="M7 0c.4 3.6 3.4 6.6 7 7-3.6.4-6.6 3.4-7 7-.4-3.6-3.4-6.6-7-7C3.6 6.6 6.6 3.6 7 0z" fill="currentColor"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 01 ABOUT ============ -->
+<section class="about wrap" id="du-an">
+  <div class="about-grid">
+    <div class="rail"><span>(01)</span><i class="v" data-a="vline"></i><span>Về dự án</span></div>
+    <div>
+      <h2 class="display" data-a="flip"><span class="flip"><span class="flip-front">Nơi riêng tư<br>được nâng tầm</span><span class="flip-back" aria-hidden="true">Nơi riêng tư<br>được nâng tầm</span></span></h2>
+      <p class="lead" data-a="up-long">Giữa quần thể Khai Sơn City, Long Biên, hai tòa tháp The Magnolia mở ra một nhịp sống chậm hơn: tầm nhìn khoáng đạt, không gian rộng và sự kín đáo dành cho số ít cư dân. Dự án do MIK Group phát triển cùng Benoy, Studio HBA và Turner.</p>
+      <a href="#khong-gian" class="btn btn-ghost" data-a="up"><span class="roll"><span>Xem không gian</span><span>Xem không gian</span></span><svg class="star" viewBox="0 0 14 14"><path d="M7 0c.4 3.6 3.4 6.6 7 7-3.6.4-6.6 3.4-7 7-.4-3.6-3.4-6.6-7-7C3.6 6.6 6.6 3.6 7 0z" fill="currentColor"/></svg></a>
+    </div>
+    <div class="ph" data-a="img"><div class="ph-in"><div class="cover"><img src="img/river-balcony-900.webp" srcset="img/river-balcony-900.webp 900w, img/river-balcony.webp 1800w" sizes="(max-width:799px) 100vw, 36vw" alt="Ban công nhìn ra dòng sông lúc hoàng hôn" loading="lazy"></div></div></div>
+  </div>
+</section>
+
+<!-- ============ 02 MISSION / ARCHITECTURE ============ -->
+<section class="mission wrap" id="kien-truc">
+  <div class="st-row"><span>Kiến trúc</span><span>(02)</span><i class="ln" data-a="line"></i></div>
+  <div class="m-lines">
+    <div class="m-line m-l1"><div class="display" data-a="flip"><span class="flip"><span class="flip-front">Kiến trúc</span><span class="flip-back" aria-hidden="true">Kiến trúc</span></span></div><span class="m-num" data-a="fade">001</span></div>
+    <div class="m-line m-l2"><span class="m-num" data-a="fade">002</span><div class="display" data-a="flip" data-d=".12"><span class="flip"><span class="flip-front">của sự</span><span class="flip-back" aria-hidden="true">của sự</span></span></div></div>
+    <div class="m-line m-l3"><div class="display" data-a="flip" data-d=".24"><span class="flip"><span class="flip-front">tĩnh lặng</span><span class="flip-back" aria-hidden="true">tĩnh lặng</span></span></div><span class="m-num" data-a="fade">003</span></div>
+  </div>
+  <div class="m-bottom">
+    <div class="ph" data-a="img"><div class="ph-in"><div class="cover"><img src="img/towers-up-900.webp" srcset="img/towers-up-900.webp 900w, img/towers-up.webp 1800w" sizes="(max-width:799px) 80vw, 28vw" alt="Hai tòa tháp nhìn từ dưới lên" loading="lazy"></div></div></div>
+    <div class="m-text">
+      <p data-a="up">Hai tòa tháp với lớp vỏ ánh đồng và nhịp lam đứng thanh mảnh. Khung kính lớn đón trọn ánh sáng, trần căn hộ cao 4.0 – 4.6 m để mỗi khoảng sống đều thở được.</p>
+      <div class="m-stats">
+        <div data-a="up" data-d=".1"><b>418 m²</b><span>Căn Duplex</span></div>
+        <div data-a="up" data-d=".2"><b>276 m²</b><span>Căn Parkview</span></div>
+        <div data-a="up" data-d=".3"><b>4.6 m</b><span>Trần cao nhất</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 SPLIT AMENITIES ============ -->
+<section class="split" id="tien-ich">
+  <div class="split-sticky">
+    <div class="split-img">
+      <img class="on" data-k="0" src="img/facade-dusk.webp" srcset="img/facade-dusk-900.webp 900w, img/facade-dusk.webp 1800w" sizes="100vw" alt="Mặt đứng The Magnolia lúc hoàng hôn" loading="lazy">
+      <img data-k="1" src="img/dropoff.webp" srcset="img/dropoff-900.webp 900w, img/dropoff.webp 1800w" sizes="(max-width:799px) 100vw, 50vw" alt="Sảnh drop-off" loading="lazy">
+      <img data-k="2" src="img/garage.webp" srcset="img/garage-900.webp 900w, img/garage.webp 1800w" sizes="(max-width:799px) 100vw, 50vw" alt="Hầm để xe" loading="lazy">
+      <img data-k="3" src="img/pavilion.webp" srcset="img/pavilion-900.webp 900w, img/pavilion.webp 1800w" sizes="(max-width:799px) 100vw, 50vw" alt="Pavilion" loading="lazy">
+      <img data-k="4" src="img/gym.webp" srcset="img/gym-900.webp 900w, img/gym.webp 1800w" sizes="(max-width:799px) 100vw, 50vw" alt="Phòng gym" loading="lazy">
+      <img data-k="5" src="img/golf.webp" srcset="img/golf-900.webp 900w, img/golf.webp 1800w" sizes="(max-width:799px) 100vw, 50vw" alt="Phòng golf mô phỏng" loading="lazy">
+      <div class="split-cap"><b id="capNum"></b><i></i><span id="capTxt">Mặt đứng · Hoàng hôn</span></div>
+    </div>
+    <div class="split-bg"></div>
+    <div class="split-content">
+      <div class="st-row"><span>Tiện ích</span><span>(03)</span><i class="ln" style="transform:none"></i></div>
+      <div class="acc">
+        <div class="acc-item" data-k="1" data-cap="Sảnh drop-off"><button class="acc-t">Sảnh đón<sup>°</sup><i class="pl"></i></button>
+          <i class="acc-bar"><i></i></i><div class="acc-c"><div class="acc-ci"><p>Xe dừng dưới mái sảnh, nền đá sáng và ánh đèn ấm đón cư dân về nhà như về một khách sạn riêng.</p><ul><li>Sảnh drop-off</li><li>Sảnh tầng</li><li>Lounge</li></ul></div></div></div>
+        <div class="acc-item" data-k="2" data-cap="Hầm để xe"><button class="acc-t">Hầm siêu xe<sup>°</sup><i class="pl"></i></button>
+          <i class="acc-bar"><i></i></i><div class="acc-c"><div class="acc-ci"><p>Hầm để xe được chiếu sáng và hoàn thiện như một phòng trưng bày — nơi những chiếc xe cũng có chỗ đứng xứng tầm.</p><ul><li>Hầm để xe</li></ul></div></div></div>
+        <div class="acc-item" data-k="3" data-cap="Pavilion"><button class="acc-t">Pavilion<sup>°</sup><i class="pl"></i></button>
+          <i class="acc-bar"><i></i></i><div class="acc-c"><div class="acc-ci"><p>Những phòng khách chung để tiếp đối tác, gặp bạn bè hay đơn giản là đọc một cuốn sách bên khung kính.</p><ul><li>Pavilion</li><li>Business Lounge</li><li>Lounge</li></ul></div></div></div>
+        <div class="acc-item" data-k="4" data-cap="Phòng gym"><button class="acc-t">Sức khỏe<sup>°</sup><i class="pl"></i></button>
+          <i class="acc-bar"><i></i></i><div class="acc-c"><div class="acc-ci"><p>Tập luyện, phục hồi và thư giãn ngay trong tòa nhà, không cần ra khỏi nhịp sống riêng của mình.</p><ul><li>Phòng gym</li><li>Spa trị liệu</li><li>Sân thể thao</li></ul></div></div></div>
+        <div class="acc-item" data-k="5" data-cap="Golf mô phỏng"><button class="acc-t">Giải trí<sup>°</sup><i class="pl"></i></button>
+          <i class="acc-bar"><i></i></i><div class="acc-c"><div class="acc-ci"><p>Một cú swing giữa đêm thành phố, một ván bi-a cuối tuần — giải trí ở ngay tầng dưới căn hộ.</p><ul><li>Golf mô phỏng</li><li>Bi-a &amp; bóng bàn</li></ul></div></div></div>
+      </div>
+      <div class="split-cta"><a href="#lien-he" class="btn btn-ghost-d"><span class="roll"><span>Đặt lịch tham quan</span><span>Đặt lịch tham quan</span></span><svg class="star" viewBox="0 0 14 14"><path d="M7 0c.4 3.6 3.4 6.6 7 7-3.6.4-6.6 3.4-7 7-.4-3.6-3.4-6.6-7-7C3.6 6.6 6.6 3.6 7 0z" fill="currentColor"/></svg></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 SPACES ============ -->
+<section class="spaces wrap" id="khong-gian">
+  <div class="st-row"><span>Không gian</span><span>(04)</span><i class="ln" data-a="line"></i></div>
+  <div class="sp-head">
+    <h2 class="display" data-a="flip"><span class="flip"><span class="flip-front">Không gian<br>sống</span><span class="flip-back" aria-hidden="true">Không gian<br>sống</span></span></h2>
+    <div class="sp-side">
+      <p data-a="fade">Căn hộ &amp; tiện ích<br>The Magnolia</p>
+      <div class="tabs" data-a="up"><span class="pill"></span><button class="on" data-v="grid">Lưới</button><button data-v="list">Danh sách</button></div>
+    </div>
+  </div>
+  <div class="sp-panels">
+    <div class="grid">
+      <a href="#lien-he" class="card" data-a="left"><img src="img/duplex-900.webp" srcset="img/duplex-900.webp 900w, img/duplex.webp 1800w" sizes="(max-width:799px) 100vw, 50vw" alt="Phòng khách căn Duplex" loading="lazy"><div class="card-t"><span>Căn Duplex</span><span>Căn Duplex</span></div><i class="arw"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 10 10 2M3.5 2H10v6.5"/></svg><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 10 10 2M3.5 2H10v6.5"/></svg></i><div class="tags"><span>418 m²</span><span>2 tầng</span></div></a>
+      <a href="#lien-he" class="card" data-a="left" data-d=".15"><img src="img/study-900.webp" srcset="img/study-900.webp 900w, img/study.webp 1800w" sizes="(max-width:799px) 100vw, 50vw" alt="Phòng làm việc căn Parkview" loading="lazy"><div class="card-t"><span>Căn Parkview</span><span>Căn Parkview</span></div><i class="arw"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 10 10 2M3.5 2H10v6.5"/></svg><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 10 10 2M3.5 2H10v6.5"/></svg></i><div class="tags"><span>276 m²</span></div></a>
+      <a href="#lien-he" class="card" data-a="left"><img src="img/pool-900.webp" srcset="img/pool-900.webp 900w, img/pool.webp 1800w" sizes="(max-width:799px) 100vw, 50vw" alt="Hồ bơi" loading="lazy"><div class="card-t"><span>Hồ bơi</span><span>Hồ bơi</span></div><i class="arw"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 10 10 2M3.5 2H10v6.5"/></svg><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 10 10 2M3.5 2H10v6.5"/></svg></i><div class="tags"><span>Tiện ích</span><span>Ngoài trời</span></div></a>
+      <a href="#lien-he" class="card" data-a="left" data-d=".15"><img src="img/business-lounge-900.webp" srcset="img/business-lounge-900.webp 900w, img/business-lounge.webp 1800w" sizes="(max-width:799px) 100vw, 50vw" alt="Business Lounge" loading="lazy"><div class="card-t"><span>Business Lounge</span><span>Business Lounge</span></div><i class="arw"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 10 10 2M3.5 2H10v6.5"/></svg><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 10 10 2M3.5 2H10v6.5"/></svg></i><div class="tags"><span>Tiện ích</span><span>Làm việc</span></div></a>
+      <a href="#lien-he" class="card" data-a="left"><img src="img/lounge-900.webp" srcset="img/lounge-900.webp 900w, img/lounge.webp 1800w" sizes="(max-width:799px) 100vw, 50vw" alt="Lounge" loading="lazy"><div class="card-t"><span>Lounge</span><span>Lounge</span></div><i class="arw"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 10 10 2M3.5 2H10v6.5"/></svg><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 10 10 2M3.5 2H10v6.5"/></svg></i><div class="tags"><span>Tiện ích</span><span>Thư giãn</span></div></a>
+      <a href="#lien-he" class="card" data-a="left" data-d=".15"><img src="img/spa-900.webp" srcset="img/spa-900.webp 900w, img/spa.webp 1800w" sizes="(max-width:799px) 100vw, 50vw" alt="Spa trị liệu" loading="lazy"><div class="card-t"><span>Spa trị liệu</span><span>Spa trị liệu</span></div><i class="arw"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 10 10 2M3.5 2H10v6.5"/></svg><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 10 10 2M3.5 2H10v6.5"/></svg></i><div class="tags"><span>Tiện ích</span><span>Sức khỏe</span></div></a>
+    </div>
+    <div class="list">
+      <a href="#lien-he" data-img="img/duplex-900.webp"><i class="bgh"></i><span class="c1">Căn Duplex</span><span class="c2">418 m² · 2 tầng</span><span class="c3">Căn hộ</span><svg class="c4" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1"><path d="M2 10 10 2M3.5 2H10v6.5"/></svg></a>
+      <a href="#lien-he" data-img="img/study-900.webp"><i class="bgh"></i><span class="c1">Căn Parkview</span><span class="c2">276 m²</span><span class="c3">Căn hộ</span><svg class="c4" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1"><path d="M2 10 10 2M3.5 2H10v6.5"/></svg></a>
+      <a href="#lien-he" data-img="img/pool-900.webp"><i class="bgh"></i><span class="c1">Hồ bơi</span><span class="c2">Ngoài trời</span><span class="c3">Tiện ích</span><svg class="c4" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1"><path d="M2 10 10 2M3.5 2H10v6.5"/></svg></a>
+      <a href="#lien-he" data-img="img/business-lounge-900.webp"><i class="bgh"></i><span class="c1">Business Lounge</span><span class="c2">Làm việc</span><span class="c3">Tiện ích</span><svg class="c4" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1"><path d="M2 10 10 2M3.5 2H10v6.5"/></svg></a>
+      <a href="#lien-he" data-img="img/lounge-900.webp"><i class="bgh"></i><span class="c1">Lounge</span><span class="c2">Thư giãn</span><span class="c3">Tiện ích</span><svg class="c4" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1"><path d="M2 10 10 2M3.5 2H10v6.5"/></svg></a>
+      <a href="#lien-he" data-img="img/spa-900.webp"><i class="bgh"></i><span class="c1">Spa trị liệu</span><span class="c2">Sức khỏe</span><span class="c3">Tiện ích</span><svg class="c4" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1"><path d="M2 10 10 2M3.5 2H10v6.5"/></svg></a>
+    </div>
+  </div>
+  <div class="sp-foot">
+    <p data-a="fade">Giá từ 250 triệu/m². Liên hệ để nhận mặt bằng và bảng giá chi tiết từng căn.</p>
+    <a href="#lien-he" class="btn btn-ghost" data-a="up"><span class="roll"><span>Nhận bảng giá</span><span>Nhận bảng giá</span></span><svg class="star" viewBox="0 0 14 14"><path d="M7 0c.4 3.6 3.4 6.6 7 7-3.6.4-6.6 3.4-7 7-.4-3.6-3.4-6.6-7-7C3.6 6.6 6.6 3.6 7 0z" fill="currentColor"/></svg></a>
+  </div>
+</section>
+<div class="list-prev"><img alt=""></div>
+
+<!-- ============ 05 WHY ============ -->
+<section class="why" id="vi-sao">
+  <div class="why-bg"><div class="why-bg-in"><img src="img/night-900.webp" srcset="img/night-900.webp 900w, img/night.webp 1800w" sizes="100vw" alt="" loading="lazy"></div></div>
+  <div class="why-in wrap">
+    <div class="why-head">
+      <div class="rail"><span>(05)</span><i class="v" data-a="vline"></i><span>Giá trị</span></div>
+      <h2 class="display" data-a="flip"><span class="flip"><span class="flip-front">Vì sao<br>chọn<br>Magnolia</span><span class="flip-back" aria-hidden="true">Vì sao<br>chọn<br>Magnolia</span></span></h2>
+    </div>
+    <article class="bcard b1" data-a="card">
+      <i class="bl t"></i><i class="bl b"></i><i class="bl l"></i><i class="bl r"></i><i class="bl m"></i>
+      <div class="bc-top"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M20 36s-11-10.5-11-19a11 11 0 0 1 22 0c0 8.5-11 19-11 19z"/><circle cx="20" cy="17" r="4"/></svg><h3><small>Vị trí</small>Khai Sơn City,<br>Long Biên</h3></div>
+      <p class="bc-txt">Nằm trong một khu đô thị được quy hoạch đồng bộ — đủ gần để kết nối với nhịp phố, đủ xa để giữ sự yên tĩnh.</p>
+    </article>
+    <article class="bcard b2" data-a="card">
+      <i class="bl t"></i><i class="bl b"></i><i class="bl l"></i><i class="bl r"></i><i class="bl m"></i>
+      <div class="bc-top"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M8 36V12l8-6v30M16 36V8l8 4v24M24 36V14l8 4v18M4 36h32"/></svg><h3><small>Kiến trúc</small>Benoy</h3></div>
+      <p class="bc-txt">Ngôn ngữ thiết kế tiết chế: lam đứng thanh mảnh, kính lớn và lớp vỏ ánh đồng đổi sắc theo từng giờ trong ngày.</p>
+    </article>
+    <article class="bcard b3" data-a="card">
+      <i class="bl t"></i><i class="bl b"></i><i class="bl l"></i><i class="bl r"></i><i class="bl m"></i>
+      <div class="bc-top"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M6 26h28v6H6zM9 26v-6a3 3 0 0 1 3-3h16a3 3 0 0 1 3 3v6M10 32v3M30 32v3M20 6v7M15 9h10"/></svg><h3><small>Nội thất</small>Studio HBA</h3></div>
+      <p class="bc-txt">Vật liệu tự nhiên, ánh sáng ấm và tỉ lệ rộng rãi — những không gian chung mang tinh thần của một khách sạn hạng sang.</p>
+    </article>
+    <article class="bcard b4" data-a="card">
+      <i class="bl t"></i><i class="bl b"></i><i class="bl l"></i><i class="bl r"></i><i class="bl m"></i>
+      <div class="bc-top"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M20 4l13 6v9c0 8-5.5 14.5-13 17-7.5-2.5-13-9-13-17v-9z"/><path d="M14 20l4.5 4.5L27 16"/></svg><h3><small>Phát triển</small>MIK Group &amp; Turner</h3></div>
+      <p class="bc-txt">MIK Group phát triển dự án cùng Turner đồng hành — sự chỉn chu được giữ từ bản vẽ đến ngày bàn giao.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ============ 06 MOMENTS ============ -->
+<section class="moments wrap" id="khoanh-khac">
+  <div class="st-row"><span>Khoảnh khắc</span><span>(06)</span><i class="ln" data-a="line"></i></div>
+  <div class="mo-head">
+    <h2 class="display" data-a="flip"><span class="flip"><span class="flip-front">Nhịp sống /</span><span class="flip-back" aria-hidden="true">Nhịp sống /</span></span></h2>
+    <div class="mo-side">
+      <p data-a="fade">Ba khung cảnh, ba thời điểm trong ngày tại The Magnolia.</p>
+      <a href="#lien-he" class="btn btn-ghost" data-a="up"><span class="roll"><span>Đặt lịch xem nhà</span><span>Đặt lịch xem nhà</span></span><svg class="star" viewBox="0 0 14 14"><path d="M7 0c.4 3.6 3.4 6.6 7 7-3.6.4-6.6 3.4-7 7-.4-3.6-3.4-6.6-7-7C3.6 6.6 6.6 3.6 7 0z" fill="currentColor"/></svg></a>
+    </div>
+  </div>
+  <div class="mo-grid">
+    <a class="mo" href="#lien-he" data-a="up"><div class="pimg"><img src="img/dusk-aerial-900.webp" alt="Hai tòa tháp lúc hoàng hôn" loading="lazy"></div><div class="mo-meta"><i class="mo-dot"></i><h3>Hoàng hôn phủ lên hai tòa tháp</h3></div><small>Phối cảnh · 01</small></a>
+    <a class="mo" href="#lien-he" data-a="up" data-d=".15"><div class="pimg"><img src="img/garden-900.webp" alt="Lối vào qua khu vườn" loading="lazy"></div><div class="mo-meta"><i class="mo-dot"></i><h3>Lối về nhà qua khu vườn xanh</h3></div><small>Phối cảnh · 02</small></a>
+    <a class="mo" href="#lien-he" data-a="up" data-d=".3"><div class="pimg"><img src="img/crown-900.webp" alt="Đỉnh tòa tháp với biểu tượng MIK" loading="lazy"></div><div class="mo-meta"><i class="mo-dot"></i><h3>Đỉnh tháp chạm bầu trời buổi sớm</h3></div><small>Phối cảnh · 03</small></a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot wrap" id="lien-he">
+  <div class="ft-top">
+    <div>Bạn muốn tham quan<br>dự án?<br><a href="tel:0336764345" class="btn btn-light"><span class="roll"><span>Đặt lịch</span><span>Đặt lịch</span></span></a></div>
+    <div><span class="lbl">Hotline</span><a href="tel:0336764345" class="big"><span class="roll"><span>033.6764.345</span><span>033.6764.345</span></span></a></div>
+    <div><span class="lbl">Giá từ</span><span class="big">250 triệu/m²</span></div>
+    <a href="#top" class="totop"><i><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 9V1M1.5 4.5 5 1l3.5 3.5"/></svg><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 9V1M1.5 4.5 5 1l3.5 3.5"/></svg></i>Lên đầu trang</a>
+  </div>
+  <div class="mq-wrap">
+    <div class="mq"><div class="mq-track"><span>The Magnolia</span><span>The Magnolia</span><span>The Magnolia</span></div><div class="mq-track" aria-hidden="true"><span>The Magnolia</span><span>The Magnolia</span><span>The Magnolia</span></div></div>
+    <div class="mq rev"><div class="mq-track"><span>Private Residences</span><span>Private Residences</span></div><div class="mq-track" aria-hidden="true"><span>Private Residences</span><span>Private Residences</span></div></div>
+    <a href="tel:0336764345" class="circle" aria-label="Gọi hotline">
+      <span class="cbg"></span>
+      <svg class="ring" viewBox="0 0 200 200"><defs><path id="cp" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text><textPath href="#cp">Gọi ngay • Đặt lịch xem nhà • Gọi ngay • Đặt lịch xem nhà •</textPath></text></svg>
+      <span class="cic"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.3"><path d="M2 10 10 2M3.5 2H10v6.5"/></svg><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.3"><path d="M2 10 10 2M3.5 2H10v6.5"/></svg></span>
+    </a>
+  </div>
+  <div class="ft-bot">
+    <span>© The Magnolia Private Residences · MIK Group</span>
+    <span>Hình ảnh mang tính minh họa</span>
+  </div>
+</footer>
+</div>
+
+<a href="tel:0336764345" class="fab">Đặt<br>lịch</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(()=>{
+gsap.registerPlugin(ScrollTrigger);
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const MOB = matchMedia('(max-width: 799px)').matches;
+const $=(s,c=document)=>c.querySelector(s), $$=(s,c=document)=>[...c.querySelectorAll(s)];
+const EASE='power3.out';
+
+/* ---------- smooth scroll ---------- */
+let lenis=null;
+if(!RM && window.Lenis){
+  lenis=new Lenis({lerp:.1,smoothWheel:true});
+  lenis.on('scroll',ScrollTrigger.update);
+  gsap.ticker.add(t=>lenis.raf(t*1000));
+  gsap.ticker.lagSmoothing(0);
+}
+const goTo=t=>{ if(lenis) lenis.scrollTo(t,{duration:1.4}); else (typeof t==='number'?scrollTo({top:t}):t.scrollIntoView({behavior:'smooth'})); };
+$$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+  const id=a.getAttribute('href'); const t=id==='#top'?0:$(id); if(t===null) return;
+  e.preventDefault(); document.body.classList.remove('menu-open'); goTo(t);
+}));
+$('.burger').addEventListener('click',()=>document.body.classList.toggle('menu-open'));
+
+/* ---------- flip (Brave heading rotate) ---------- */
+function flipTl(el,{y='6.25rem',delay=0}={}){
+  const f=$('.flip-front',el), b=$('.flip-back',el);
+  gsap.set(b,{rotationX:-90,yPercent:100});
+  gsap.set(el,{opacity:0,y});
+  const tl=gsap.timeline({paused:true,delay});
+  tl.to(f,{rotationX:90,yPercent:-100,duration:1.5,ease:'expo.inOut'},0)
+    .to(b,{rotationX:0,yPercent:0,duration:1.5,ease:'expo.inOut'},0)
+    .to(el,{opacity:1,y:0,duration:1.5,ease:'expo.inOut'},0);
+  return tl;
+}
+
+/* ---------- scroll reveals ---------- */
+const onView=(el,fn,start='top 88%')=>ScrollTrigger.create({trigger:el,start,once:true,onEnter:fn});
+if(!RM){
+  $$('[data-a]').forEach(el=>{
+    const k=el.dataset.a, d=parseFloat(el.dataset.d||0);
+    if(k==='flip'){ const tl=flipTl(el,{delay:d}); onView(el,()=>tl.play()); return; }
+    if(k==='up'){ gsap.set(el,{opacity:0,y:'2rem'}); onView(el,()=>gsap.to(el,{opacity:1,y:0,duration:1,delay:d,ease:EASE})); return; }
+    if(k==='up-long'){ gsap.set(el,{opacity:0,y:'6rem'}); onView(el,()=>gsap.to(el,{opacity:1,y:0,duration:1.25,delay:d,ease:EASE})); return; }
+    if(k==='left'){ gsap.set(el,{opacity:0,x:'2.8rem'}); onView(el,()=>gsap.to(el,{opacity:1,x:0,duration:1.25,delay:d,ease:EASE})); return; }
+    if(k==='fade'){ gsap.set(el,{opacity:0}); onView(el,()=>gsap.to(el,{opacity:1,duration:1,delay:.5+d,ease:'power1.out'})); return; }
+    if(k==='line'){ gsap.set(el,{scaleX:0}); onView(el,()=>gsap.to(el,{scaleX:1,duration:1.25,ease:EASE})); return; }
+    if(k==='vline'){ gsap.set(el,{scaleY:0}); onView(el,()=>gsap.to(el,{scaleY:1,duration:1.25,ease:EASE})); return; }
+    if(k==='img'){
+      const c=$('.cover',el), box=$('.ph-in',el); gsap.set(box,{scaleY:0,transformOrigin:'50% 100%'}); gsap.set(c,{opacity:0,scale:1.12});
+      onView(el,()=>{ gsap.to(box,{scaleY:1,duration:1.25,ease:EASE}); gsap.to(c,{opacity:1,duration:.6,delay:.7}); gsap.to(c,{scale:1,duration:1.6,delay:.7,ease:EASE}); });
+      // vertical parallax on inner image
+      gsap.fromTo($('img',el),{yPercent:-6,scale:1.14},{yPercent:6,scale:1.14,ease:'none',scrollTrigger:{trigger:el,start:'top bottom',end:'bottom top',scrub:true}});
+      return;
+    }
+    if(k==='card'){
+      const L=$$('.bl',el), inner=$$('.bc-top,.bc-txt',el);
+      gsap.set($$('.bl.t,.bl.b,.bl.m',el),{scaleX:0}); gsap.set($$('.bl.l,.bl.r',el),{scaleY:0});
+      gsap.set(el,{opacity:0,y:'6rem'}); gsap.set(inner,{opacity:0,y:'1rem'});
+      onView(el,()=>{
+        const tl=gsap.timeline();
+        tl.to(el,{opacity:1,y:0,duration:1.25,ease:EASE})
+          .to($$('.bl.l,.bl.t',el),{scaleX:1,scaleY:1,duration:.5,ease:EASE},.25)
+          .to($('.bl.m',el),{scaleX:1,duration:.6,ease:EASE},.4)
+          .to($$('.bl.r,.bl.b',el),{scaleX:1,scaleY:1,duration:.5,ease:EASE},.55)
+          .to(inner,{opacity:1,y:0,duration:.9,stagger:.12,ease:EASE},.5);
+      },'top 85%');
+      return;
+    }
+  });
+}
+
+/* ---------- hero intro (after load) ---------- */
+const heroTl=gsap.timeline({paused:true});
+$$('[data-hero-flip]').forEach(el=>{
+  const f=$('.flip-front',el), b=$('.flip-back',el), d=parseFloat(el.dataset.heroFlip);
+  gsap.set(b,{rotationX:-90,yPercent:100}); gsap.set(el,{opacity:0,y:50});
+  heroTl.to(f,{rotationX:90,yPercent:-100,duration:1.5,ease:'expo.inOut'},d)
+        .to(b,{rotationX:0,yPercent:0,duration:1.5,ease:'expo.inOut'},d)
+        .to(el,{opacity:1,y:0,duration:1.5,ease:'expo.inOut'},d);
+});
+gsap.set('.hero-media',{scale:1.2085});
+heroTl.to('.hero-media',{scale:1,duration:1.5,ease:'power1.inOut'},.5);
+$$('[data-h]').forEach(el=>{ gsap.set(el,{opacity:0,y:'2rem'}); heroTl.to(el,{opacity:1,y:0,duration:.75,ease:EASE},parseFloat(el.dataset.h)); });
+gsap.set('.nav',{opacity:0,y:'-2rem'}); heroTl.to('.nav',{opacity:1,y:0,duration:1,ease:EASE},1);
+
+// hero scroll: words drift apart, image pushes in
+gsap.timeline({scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}})
+  .to('.hw1 .flip',{xPercent:-18,ease:'none'},0)
+  .to('.hw2 .flip',{xPercent:18,ease:'none'},0)
+  .to('.hero-inner',{scale:1.25,ease:'none'},0);
+
+/* ---------- page loader ---------- */
+const heroImg=$('.hero-inner img');
+let started=false;
+const start=()=>{ if(started) return; started=true;
+  gsap.to('.page',{opacity:1,duration:.3,delay:.1,onComplete:()=>{ RM?heroTl.progress(1):heroTl.play(); ScrollTrigger.refresh(); }});
+};
+(heroImg.complete?Promise.resolve():new Promise(r=>{heroImg.onload=r;heroImg.onerror=r;})).then(start);
+setTimeout(start,2500);
+addEventListener('load',()=>ScrollTrigger.refresh());
+
+/* ---------- split amenities: one amenity per scroll step ---------- */
+const imgs=$$('.split-img img'), items=$$('.acc-item'), cap=$('#capTxt'), capNum=$('#capNum'), acc=$('.acc');
+const N=items.length; let cur=0, active=-1;
+function showImg(k,label,num){
+  if(k!==cur){
+    const next=imgs[k], fwd=k>cur; cur=k;
+    imgs.forEach(i=>{i.style.zIndex=i===next?2:(i.classList.contains('on')?1:0);});
+    gsap.killTweensOf(next);
+    gsap.fromTo(next,{clipPath:fwd?'inset(100% 0% 0% 0%)':'inset(0% 0% 100% 0%)',scale:1.12},
+      {clipPath:'inset(0% 0% 0% 0%)',scale:1,duration:1.05,ease:'power4.inOut',overwrite:true,
+       onComplete:()=>{ if(cur!==k) return; imgs.forEach(i=>{ if(i!==next){i.classList.remove('on');i.style.clipPath='';} }); next.classList.add('on'); }});
+  }
+  gsap.to([cap,capNum],{opacity:0,duration:.2,overwrite:true,onComplete:()=>{cap.textContent=label;capNum.textContent=num||'';gsap.to([cap,capNum],{opacity:1,duration:.4});}});
+}
+function setActive(i){
+  if(i===active) return; active=i;
+  items.forEach((it,j)=>{
+    const c=$('.acc-c',it), on=j===i;
+    if(on===it.classList.contains('open')) return;
+    it.classList.toggle('open',on);
+    if(on){
+      gsap.to(c,{height:'auto',duration:.6,ease:EASE,overwrite:true});
+      gsap.fromTo($('.acc-ci',c),{opacity:0,y:'1rem'},{opacity:1,y:0,duration:.5,delay:.12,ease:EASE,overwrite:true});
+    }else gsap.to(c,{height:0,duration:.5,ease:'power3.inOut',overwrite:true});
+  });
+  if(i<0) showImg(0,'Mặt đứng · Hoàng hôn','');
+  else showImg(+items[i].dataset.k,items[i].dataset.cap,String(i+1).padStart(2,'0')+' / '+String(N).padStart(2,'0'));
+}
+if(!MOB && !RM){
+  // intro: full-bleed image shrinks to half, black panel + list arrive (first 200vh)
+  gsap.timeline({scrollTrigger:{trigger:'.split',start:'top bottom',end:'top -100%',scrub:true}})
+    .fromTo('.split-img',{width:'100%'},{width:'50%',ease:'none',duration:35},50)
+    .fromTo('.split-bg',{scaleX:0},{scaleX:1,ease:'none',duration:35},50)
+    .fromTo('.split-content .st-row',{opacity:0,y:'2.8rem'},{opacity:1,y:0,duration:8,ease:'none'},80)
+    .fromTo('.acc',{opacity:0,y:'2.8rem'},{opacity:1,y:0,duration:8,ease:'none'},86)
+    .fromTo('.split-cta',{opacity:0,y:'2.8rem'},{opacity:1,y:0,duration:6,ease:'none'},94)
+    .to({},{duration:.01},100);
+  // steps: each slice of scroll opens the next amenity
+  const bars=items.map(it=>$('.acc-bar i',it));
+  const steps=ScrollTrigger.create({trigger:'.split',start:'top -100%',end:'bottom bottom',
+    onEnter:()=>acc.classList.add('stepping'),
+    onLeaveBack:()=>{acc.classList.remove('stepping');setActive(-1);bars.forEach(b=>gsap.set(b,{scaleX:0}));},
+    onUpdate:self=>{
+      const x=self.progress*N, i=Math.min(N-1,Math.floor(x));
+      if(self.progress>0){acc.classList.add('stepping');setActive(i);}
+      bars.forEach((b,j)=>gsap.set(b,{scaleX:j<i?1:j===i?Math.min(1,x-i):0}));
+    }});
+  // click a title → glide to that amenity's step
+  items.forEach((it,j)=>$('.acc-t',it).addEventListener('click',()=>{
+    const y=steps.start+(steps.end-steps.start)*(j+.35)/N; lenis?lenis.scrollTo(y,{duration:1.2}):scrollTo({top:y,behavior:'smooth'});
+  }));
+}else{
+  gsap.set(['.split-content .st-row','.acc','.split-cta'],{opacity:1});
+  items.forEach((it,j)=>$('.acc-t',it).addEventListener('click',()=>setActive(it.classList.contains('open')?-1:j)));
+}
+
+/* ---------- spaces: grid / list ---------- */
+const tabs=$$('.tabs button'), pill=$('.tabs .pill');
+const placePill=b=>{ pill.style.width=b.offsetWidth+'px'; pill.style.transform=`translateX(${b.offsetLeft-3}px)`; };
+placePill(tabs[0]); addEventListener('resize',()=>placePill($('.tabs button.on')));
+tabs.forEach(b=>b.addEventListener('click',()=>{
+  if(b.classList.contains('on')) return;
+  tabs.forEach(t=>t.classList.toggle('on',t===b)); placePill(b);
+  const show=b.dataset.v==='grid'?$('.grid'):$('.list'), hide=b.dataset.v==='grid'?$('.list'):$('.grid');
+  gsap.to(hide,{opacity:0,duration:.25,onComplete:()=>{
+    hide.style.display='none'; show.style.display=b.dataset.v==='grid'?'grid':'block';
+    gsap.fromTo(show,{opacity:0,y:'2rem'},{opacity:1,y:0,duration:1,ease:EASE});
+    gsap.set(show.querySelectorAll('[data-a]'),{opacity:1,x:0,y:0});
+    ScrollTrigger.refresh();
+  }});
+}));
+const prev=$('.list-prev'), pimg=$('img',prev);
+const qx=gsap.quickTo(prev,'x',{duration:.6,ease:'power3'}), qy=gsap.quickTo(prev,'y',{duration:.6,ease:'power3'});
+$$('.list a').forEach(a=>{
+  a.addEventListener('mouseenter',()=>{ pimg.src=a.dataset.img; prev.classList.add('on'); });
+  a.addEventListener('mouseleave',()=>prev.classList.remove('on'));
+});
+$('.list').addEventListener('mousemove',e=>{ qx(e.clientX-prev.offsetWidth/2); qy(e.clientY-prev.offsetHeight/2); });
+
+/* ---------- why: header fades as last card arrives ---------- */
+if(!MOB && !RM){
+  ScrollTrigger.create({trigger:'.b4',start:'top 55%',
+    onEnter:()=>gsap.to('.why-head',{opacity:0,y:'-2rem',duration:.36,ease:EASE}),
+    onLeaveBack:()=>gsap.to('.why-head',{opacity:1,y:0,duration:.5,ease:EASE})});
+}
+
+/* ---------- footer: marquee only when visible, circle scale-in ---------- */
+const mq=$('.mq-wrap');
+new IntersectionObserver(es=>es.forEach(e=>mq.classList.toggle('mq-paused',!e.isIntersecting))).observe(mq);
+if(!RM){ gsap.set('.circle',{scale:0}); onView('.circle',()=>gsap.to('.circle',{scale:1,duration:1,ease:'power3.out'}),'top 90%'); }
+
+/* ---------- header: hide on scroll down, show on scroll up ---------- */
+const nav=$('.nav');let lastY=0;
+addEventListener('scroll',()=>{const y=scrollY;if(document.body.classList.contains('menu-open'))return;nav.classList.toggle('away',y>innerHeight*.6&&y>lastY);lastY=y;},{passive:true});
+
+/* ---------- mobile fab hides at footer ---------- */
+const fab=$('.fab');
+new IntersectionObserver(es=>es.forEach(e=>fab.classList.toggle('hide',e.isIntersecting)),{threshold:.05}).observe($('.foot'));
+})();
+</script>
+</body>
+</html>
